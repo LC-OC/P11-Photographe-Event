@@ -8,13 +8,14 @@
 </head>
 <body> 
     <header>
-        <img src="wp-content\themes\photographevent\assets\images\logo_photographe_theme.png" alt="Logo Nathalie Mota - Photographe Theme">
         <nav>
+            <img src="wp-content\themes\photographevent\assets\images\logo_photographe_theme.png" alt="Logo Nathalie Mota - Photographe Theme">
             <?php
                 if (has_nav_menu('primary')) {
                     wp_nav_menu(array('theme_location' => 'primary'));
-                } 
+                }
             ?>
         </nav>
-        
+        <img src="wp-content\themes\photographevent\assets\images\header_photographe_event.png" alt="">
+        <?php  get_template_part( './template-parts/modale' ); ?>
     </header>

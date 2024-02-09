@@ -1,0 +1,34 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 8rem;
+    img {
+        height: 14px;
+    }
+    ul#menu-main-menu {
+        width: 20rem;
+        list-style-type: none;
+        font-family: $space-mono;
+        font-size: 16px;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        a {
+            text-decoration: none;
+            color: black;
+            &:visited {
+                color: black;
+            }
+            &:hover {
+                color: #E00000;
+            }
+            &:active {
+                color: #FE5858;
+            }
+        }
+}
+
+}

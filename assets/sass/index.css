@@ -1,11 +1,111 @@
-header img {
-  height: 10rem;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  max-width: 1440px;
+}
+
+#modale_contact {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+}
+#modale_contact.overlay {
+  visibility: visible;
+  opacity: 1;
+}
+#modale_contact #modale_contact_container {
+  position: inherit;
+  z-index: 2;
+  max-width: 35%;
+  min-height: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 0;
+  text-align: center;
+  padding-top: 20px;
+  overflow: hidden;
+  border: solid black 4px;
+  background-color: white;
+}
+#modale_contact #header_modale_contact img {
+  height: 106.05px;
+}
+
+header {
+  width: 100%;
+}
+
+footer {
+  width: 100%;
+  font-family: "Space Mono", monospace;
+  padding-bottom: 0.5rem;
+  border-top: solid 1px black;
+}
+footer .menu-footer-container {
+  width: 35rem;
+  margin: auto;
+}
+footer .menu-footer-container ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  text-transform: uppercase;
+  justify-content: space-between;
+}
+footer .menu-footer-container ul a {
+  text-decoration: none;
+  color: black;
+}
+footer .menu-footer-container ul a:visited {
+  color: black;
+}
+footer .menu-footer-container ul a:hover {
+  color: #E00000;
+}
+footer .menu-footer-container ul a:active {
+  color: #FE5858;
 }
 
 nav {
-  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 8rem;
 }
-
-h1 {
-  color: magenta;
+nav img {
+  height: 14px;
+}
+nav ul#menu-main-menu {
+  width: 20rem;
+  list-style-type: none;
+  font-family: "Space Mono", monospace;
+  font-size: 16px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+nav ul#menu-main-menu a {
+  text-decoration: none;
+  color: black;
+}
+nav ul#menu-main-menu a:visited {
+  color: black;
+}
+nav ul#menu-main-menu a:hover {
+  color: #E00000;
+}
+nav ul#menu-main-menu a:active {
+  color: #FE5858;
 }/*# sourceMappingURL=index.css.map */

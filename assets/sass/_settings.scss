@@ -1,11 +1,16 @@
-header img {
-    height: 10rem;
-}
+// Media Size
 
-nav {
-    font-size: 2rem;
-}
+$mobile: "screen and (max-width: 700px)";
 
-h1 {
-    color: magenta;
+// Fonts
+
+$space-mono: 'Space Mono', monospace;
+$poppins: "Poppins";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  max-width: 1440px;
 }

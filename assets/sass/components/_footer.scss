@@ -1,0 +1,31 @@
+footer {
+    width: 100%;
+    font-family: $space-mono;
+    padding-bottom: 0.5rem;
+    border-top: solid 1px black;
+    .menu-footer-container {
+        width: 35rem;
+        margin: auto;
+        ul {
+            list-style-type: none; 
+            display: flex;
+            flex-direction: row;
+            font-size: 16px;
+            text-transform: uppercase;
+            justify-content: space-between;
+            a {
+                text-decoration: none;
+                color: black;
+                &:visited {
+                    color: black;
+                }
+                &:hover {
+                    color: #E00000;
+                }
+                &:active {
+                    color: #FE5858;
+                }
+            }
+        }
+    }
+}

@@ -30,14 +30,51 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   height: 0;
-  text-align: center;
   padding-top: 20px;
   overflow: hidden;
-  border: solid black 4px;
+  border: solid black 5px;
   background-color: white;
+  margin-top: -10px;
+}
+#modale_contact #modale_contact_container div#form_contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#modale_contact #modale_contact_container div#form_contact label {
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "Space Mono", monospace;
+  text-transform: uppercase;
+}
+#modale_contact #modale_contact_container div#form_contact input {
+  width: 263px;
+  height: 40px;
+  border: solid 1px #B8BBC2;
+  border-radius: 8px;
+  margin-bottom: -10px;
+}
+#modale_contact #modale_contact_container div#form_contact textarea {
+  width: 263px;
+  height: 120px;
+  border: solid 1px #B8BBC2;
+  border-radius: 8px;
+  resize: none;
+}
+#modale_contact #modale_contact_container div#form_contact input.wpcf7-submit {
+  font-family: "Space Mono", monospace;
+  height: 50px;
+  background-color: #D8D8D8;
+  border: none;
+  border-radius: unset;
+  margin-left: 4.3rem;
+  cursor: pointer;
 }
 #modale_contact #header_modale_contact img {
-  height: 106.05px;
+  height: 90px;
+  margin-left: -7rem;
+  margin-bottom: 0.8rem;
 }
 
 header {

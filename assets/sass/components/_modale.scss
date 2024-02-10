@@ -21,14 +21,53 @@
         top: 50%;
         transform: translate(-50%, -50%);
         height: 0;
-        text-align: center;
         padding-top: 20px;
         overflow: hidden;
-        border: solid black 4px;
+        border: solid black 5px;
         background-color: white;
+        margin-top: -10px;
+        div#form_contact {
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            label {
+                font-size: 12px;
+                font-weight: 500;
+                font-family: $space-mono;
+                text-transform: uppercase;
+            }
+            input {
+                width: 263px;
+                height: 40px;
+                border: solid 1px #B8BBC2;
+                border-radius: 8px;
+                margin-bottom: -10px;
+            }
+            textarea {
+                width: 263px;
+                height: 120px;
+                border: solid 1px #B8BBC2;
+                border-radius: 8px;
+                resize: none;
+            }
+            input.wpcf7-submit {
+                font-family: $space-mono;
+                height: 50px;
+                background-color: #D8D8D8;
+                border: none;
+                border-radius: unset;
+                margin-left: 4.3rem;
+                cursor: pointer;
+            }
+        }
     }
     
     #header_modale_contact img {
-        height: 106.05px;
+        height: 90px;
+        margin-left: -7rem;
+        margin-bottom: 0.8rem;
     }
 }

@@ -7,6 +7,3 @@ console.log(modaleContainer);
 modaleContactLink.addEventListener("click", function openModale() {
   modaleContainer.classList.toggle("overlay");
 });
-
-let test = document.getElementById("header_modale_contact");
-console.log(test);

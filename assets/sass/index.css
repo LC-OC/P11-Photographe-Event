@@ -79,6 +79,7 @@ body {
 
 header {
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 
 footer {
@@ -145,4 +146,35 @@ nav ul#menu-main-menu a:hover {
 }
 nav ul#menu-main-menu a:active {
   color: #FE5858;
+}
+
+.photo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  padding: 2rem;
+}
+.photo-container .photo-informations-container {
+  width: 50%;
+  border-bottom: solid 1px black;
+  padding-bottom: 1rem;
+  font-family: "Space Mono", monospace;
+  text-transform: uppercase;
+}
+.photo-container .photo-informations-container h1 {
+  font-size: 66px;
+  font-style: italic;
+  line-height: 58px;
+  width: 50%;
+  font-weight: 400;
+}
+.photo-container .photo-informations-container p {
+  font-size: 14px;
+}
+.photo-container .photo-img-container {
+  width: 50%;
+  padding-left: 1rem;
+}
+.photo-container .photo-img-container img {
+  width: 100%;
 }/*# sourceMappingURL=index.css.map */

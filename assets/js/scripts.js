@@ -7,6 +7,11 @@ function openModale() {
   modaleContainer.classList.toggle("overlay");
 }
 
+function closeModale() {
+  modaleContainer.classList.remove("overlay");
+}
+jQuery("#modale_contact").click(closeModale);
+
 jQuery(".contact-modale").click(openModale);
 
 jQuery("#contact_photo").click(function () {

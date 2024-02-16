@@ -201,4 +201,11 @@ nav ul#menu-main-menu a:active {
   font-size: 12px;
   border: none;
   cursor: pointer;
+}
+
+.photo_galery {
+  width: 564px;
+  height: 495px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=index.css.map */

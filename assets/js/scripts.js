@@ -7,12 +7,17 @@ function openModale() {
   modaleContainer.classList.toggle("overlay");
 }
 
-function closeModale() {
-  modaleContainer.classList.remove("overlay");
-}
-jQuery("#modale_contact").click(closeModale);
+// close modal when user clicks outside of it
+window.addEventListener("click", function (e) {
+  if (e.target == modaleContainer) {
+    modaleContainer.classList.remove("overlay");
+  }
+});
 
-jQuery(".contact-modale").click(openModale);
+jQuery(".contact-modale").click(function () {
+  openModale();
+  jQuery("input[name=your-ref-photo]").val("");
+});
 
 jQuery("#contact_photo").click(function () {
   openModale();

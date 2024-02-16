@@ -8,7 +8,7 @@ get_header();
 ?>
 
 <?php  get_template_part( './template-parts/photo-content' ); ?>
-
+<?php get_template_part('./template-parts/related-photo'); ?>
 
 <?php 
 get_footer(); ?>

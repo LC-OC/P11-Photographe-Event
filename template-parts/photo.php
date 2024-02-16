@@ -1,0 +1,1 @@
+<img class="photo_galery" src="<?php the_post_thumbnail_url() ?>" alt="Photo <?php the_title() ?> ">

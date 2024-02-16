@@ -156,7 +156,6 @@ nav ul#menu-main-menu a:active {
 }
 .photo-container .photo-informations-container {
   width: 50%;
-  border-bottom: solid 1px black;
   padding-bottom: 1rem;
   font-family: "Space Mono", monospace;
   text-transform: uppercase;
@@ -177,4 +176,9 @@ nav ul#menu-main-menu a:active {
 }
 .photo-container .photo-img-container img {
   width: 100%;
+}
+
+.photo-contact-container {
+  display: flex;
+  border-top: solid 1px black;
 }/*# sourceMappingURL=index.css.map */

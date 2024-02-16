@@ -1,7 +1,7 @@
 <div class="photo-container">
     <div class="photo-informations-container">
             <h1><?php the_title() ?></h1>
-            <p>Référence: <?php echo get_field('reference'); ?></p>
+            <p>Référence: <span id="ref_value"><?php echo get_field('reference'); ?></p></span>
             <p>Catégorie: <?php $categoryPhotos = get_the_terms( $post->ID, 'categorie' );
                 foreach($categoryPhotos as $categoryPhoto) {
                     echo $categoryPhoto-> name;
@@ -16,7 +16,8 @@
     <div class="photo-img-container">
       <img src="<?php the_post_thumbnail_url() ?>" alt="Photo <?php the_title() ?> ">
     </div>
-    <div class="photo-contact-container">
-
-    </div>
+</div>
+<div class="photo-contact-container">
+    <p>Cette photo vous intéresse ?</p>
+    <button id="contact_photo">Contact</button>
 </div>

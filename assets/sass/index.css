@@ -149,7 +149,7 @@ nav ul#menu-main-menu a:active {
 }
 
 .photo-page-content {
-  padding: 2rem;
+  padding: 2rem 6rem;
 }
 .photo-page-content .photo-container {
   display: flex;
@@ -179,6 +179,11 @@ nav ul#menu-main-menu a:active {
 .photo-page-content .photo-container .photo-img-container img {
   width: 100%;
 }
+.photo-page-content .contact_nav_container {
+  width: 100%;
+  border-bottom: solid 1px black;
+  height: 118px;
+}
 
 .photo-contact-container {
   display: flex;
@@ -203,9 +208,91 @@ nav ul#menu-main-menu a:active {
   cursor: pointer;
 }
 
-.photo_galery {
+.photo_galery_container {
+  position: relative;
+}
+.photo_galery_container .photo_galery {
   width: 564px;
   height: 495px;
   -o-object-fit: cover;
      object-fit: cover;
+  cursor: pointer;
+}
+.photo_galery_container .photo_overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 564px;
+  height: 495px;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: rgba(43, 43, 43, 0.5);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+.photo_galery_container .photo_overlay .icon_expand_background {
+  background: black;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 34px;
+  vertical-align: middle;
+  position: absolute;
+  right: 0;
+  margin: 0.7rem 1.5rem;
+}
+.photo_galery_container .photo_overlay .fa-eye {
+  margin: auto;
+}
+.photo_galery_container .photo_overlay .infos_photo_galery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 0.5rem 1.5rem;
+}
+.photo_galery_container .photo_overlay .infos_photo_galery #title_photo {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+.photo_galery_container .photo_overlay .infos_photo_galery #category_photo {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+}
+
+.photo_galery_container:hover .photo_overlay {
+  opacity: 1;
+}
+
+.related_photo_container {
+  padding: 2rem 6rem;
+}
+.related_photo_container h2 {
+  font-family: "Space Mono", monospace;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 400;
+}
+.related_photo_container .related_photos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#hero-home {
+  width: 100%;
+  height: 962px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: opacity(80%);
 }/*# sourceMappingURL=index.css.map */

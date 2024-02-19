@@ -18,8 +18,10 @@
         <img src="<?php the_post_thumbnail_url() ?>" alt="Photo <?php the_title() ?> ">
         </div>
     </div>
-    <div class="photo-contact-container">
-        <p>Cette photo vous intéresse ?</p>
-        <button id="contact_photo">Contact</button>
+    <div class="contact_nav_container">
+        <div class="photo-contact-container">
+            <p>Cette photo vous intéresse ?</p>
+            <button id="contact_photo">Contact</button>
+        </div>
     </div>
 </div>

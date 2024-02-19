@@ -1,5 +1,5 @@
 .photo-page-content {
-    padding: 2rem;
+    padding: 2rem 6rem;
     .photo-container {
         display: flex;
         flex-direction: row;
@@ -27,5 +27,10 @@
                 width: 100%;
             }
         }
+    }
+    .contact_nav_container {
+        width: 100%;
+        border-bottom: solid 1px black;
+        height: 118px;
     }
 }

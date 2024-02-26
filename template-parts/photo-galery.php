@@ -4,7 +4,9 @@
         <div class="icon_expand_background">
             <i class="fa-solid fa-expand"></i>
         </div>
-        <i class="fa-regular fa-eye fa-2x"></i>
+        <a href="<?php echo get_permalink( $post->ID ); ?>">
+            <i class="fa-regular fa-eye fa-2x"></i>
+        </a>
         <div class="infos_photo_galery">
             <p id="title_photo"><?php the_title() ?></p>
                 <p id="category_photo"> 

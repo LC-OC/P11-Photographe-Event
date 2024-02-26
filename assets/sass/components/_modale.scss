@@ -11,6 +11,7 @@
     &.overlay {
         visibility: visible;
         opacity: 1;
+        animation: fade-in-move-down 1s ease;
     }
     #modale_contact_container {
         position: inherit;

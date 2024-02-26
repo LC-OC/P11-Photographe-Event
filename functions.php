@@ -4,11 +4,7 @@ function photographe_event_style(){
 }
 add_action('wp_enqueue_scripts','photographe_event_style');
 
-function scripts() {
-    wp_enqueue_script( 'script-animation', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ),'',true );
-    wp_enqueue_script( 'script-font-awesome', 'https://kit.fontawesome.com/019b68e105.js', array( 'jquery' ),'' );
-}
-add_action( 'wp_enqueue_scripts', 'scripts' );
+ 
 
 function add_google_fonts() {
     wp_enqueue_style( ' add_google_fonts ', 'https://fonts.googleapis.com/css2?family=Poppins&family=Space+Mono&display=swap', false );}
@@ -29,3 +25,46 @@ function register_menu_footer_photographe_event() {
 
 // error - conflit plugin avec thème ?
 remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
+
+
+function weichie_load_more() {
+    $ajaxposts = new WP_Query([
+        'post_type' => 'photo',
+        'posts_per_page' => 8,
+        'orderby' => 'none',
+        'post_status' => 'publish',
+        'paged' => $_POST['paged'],
+    ]);
+  
+    $response = '';
+    $max_pages = $ajaxposts->max_num_pages;
+  
+    if ($ajaxposts->have_posts()) {
+      ob_start();
+      while($ajaxposts->have_posts()) : $ajaxposts->the_post();
+        $response .= get_template_part( 'template-parts/photo-galery' );
+      endwhile;
+      $output = ob_get_contents();
+      ob_end_clean();
+    } else {
+      $response = '';
+      
+    }
+  
+    $result = [
+      'max' => $max_pages,
+      'html' => $output,
+    ];
+  
+    echo json_encode($result);
+    exit;
+  }
+  add_action('wp_ajax_weichie_load_more', 'weichie_load_more');
+  add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
+
+  function scripts() {
+    wp_enqueue_script( 'script-animation', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ),'',true );
+    wp_enqueue_script( 'script-font-awesome', 'https://kit.fontawesome.com/019b68e105.js', array( 'jquery' ),'' );
+    
+  }  
+add_action( 'wp_enqueue_scripts', 'scripts' );

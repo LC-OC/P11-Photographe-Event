@@ -7,3 +7,27 @@
     gap: 20px;
     justify-content: center;
 }
+
+#button_load_more_container {
+    width: 272px;
+    height: 50px;
+    margin: auto;
+    background-color: #D8D8D8;
+    font-family: $space-mono;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    margin-bottom: 4rem;
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    &:hover {
+        background-color: black;
+        a {
+            color: white;
+        };
+    }
+}

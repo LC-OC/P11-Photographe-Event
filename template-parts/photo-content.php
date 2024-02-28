@@ -23,5 +23,6 @@
             <p>Cette photo vous intéresse ?</p>
             <button id="contact_photo">Contact</button>
         </div>
+        <?php get_template_part('./template-parts/photo-navigation'); ?>
     </div>
 </div>

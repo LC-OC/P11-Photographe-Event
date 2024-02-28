@@ -46,3 +46,14 @@ jQuery("#button_load_more_container").on("click", function () {
     },
   });
 });
+
+// Lightbox
+let lightbox = document.querySelector("#lightbox_container");
+
+jQuery(".icon_expand_background").click(function () {
+  lightbox.classList.toggle("overlay_lightbox");
+});
+
+jQuery(".fa-xmark").click(function () {
+  lightbox.classList.remove("overlay_lightbox");
+});

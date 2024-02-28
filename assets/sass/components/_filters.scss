@@ -2,9 +2,22 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 2rem 6.6rem;
+    padding: 2rem 8.7rem;
     select {
         width: 260px;
         height: 42px;
+        border-radius: 8px;
+        border: solid 1.3px #B8BBC2;
+        font-family: $poppins;
+        font-size: 12px;
+        font-weight: 500;
+        &:focus {
+            border: solid 1.3px #215AFF;
+        }
+        option {
+            border-radius: 10px;
+        }
     }
+
+    
 }

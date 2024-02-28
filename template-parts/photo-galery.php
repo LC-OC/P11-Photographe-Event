@@ -1,3 +1,4 @@
+<?php  get_template_part( '/template-parts/lightbox' ); ?>
 <div class="photo_galery_container">
     <img class="photo_galery" src="<?php the_post_thumbnail_url() ?>" alt="Photo <?php the_title() ?> ">
     <div class="photo_overlay">

@@ -1,0 +1,19 @@
+.navigation_between_photos_container {
+    .nav_photo_hover_container {
+    width: 81px;
+    height: 71px;
+    }
+    .photo_prev_nav {
+    display: none;
+    width: 81px;
+    height: 71px;
+    object-fit: cover;
+    }
+    .photo_next_nav {
+        display: none;
+        width: 81px;
+        height: 71px;
+        object-fit: cover;
+    }
+}
+

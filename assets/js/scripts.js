@@ -57,3 +57,21 @@ jQuery(".icon_expand_background").click(function () {
 jQuery(".fa-xmark").click(function () {
   lightbox.classList.remove("overlay_lightbox");
 });
+
+// Nav More Photos
+
+jQuery(".previous_link").on("mouseover", function () {
+  jQuery(".photo_prev_nav").show();
+});
+
+jQuery(".previous_link").on("mouseout", function () {
+  jQuery(".photo_prev_nav").hide();
+});
+
+jQuery(".next_link").on("mouseover", function () {
+  jQuery(".photo_next_nav").show();
+});
+
+jQuery(".next_link").on("mouseout", function () {
+  jQuery(".photo_next_nav").hide();
+});

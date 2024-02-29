@@ -388,6 +388,25 @@ nav ul#menu-main-menu a:active {
   flex-direction: row;
 }
 
+.navigation_between_photos_container .nav_photo_hover_container {
+  width: 81px;
+  height: 71px;
+}
+.navigation_between_photos_container .photo_prev_nav {
+  display: none;
+  width: 81px;
+  height: 71px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.navigation_between_photos_container .photo_next_nav {
+  display: none;
+  width: 81px;
+  height: 71px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .animation_modale_out {
   animation: fade-in-move-up 1s ease;
 }

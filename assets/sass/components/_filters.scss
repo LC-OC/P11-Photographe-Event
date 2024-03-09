@@ -11,11 +11,11 @@
         font-family: $poppins;
         font-size: 12px;
         font-weight: 500;
-        &:focus {
+        &:active {
             border: solid 1.3px #215AFF;
         }
-        option {
-            border-radius: 10px;
+        &:focus {
+            border: solid 1.3px #215AFF;
         }
     }
 

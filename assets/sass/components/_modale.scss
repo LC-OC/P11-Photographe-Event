@@ -23,7 +23,9 @@
         transform: translate(-50%, -50%);
         height: 0;
         padding-top: 20px;
-        overflow: hidden;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scrollbar-width: thin;
         border: solid black 5px;
         background-color: white;
         margin-top: -10px;

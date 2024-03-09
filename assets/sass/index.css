@@ -6,6 +6,10 @@ body {
   max-width: 1440px;
 }
 
+a:-webkit-any-link {
+  color: black;
+}
+
 #modale_contact {
   position: fixed;
   top: 0;
@@ -32,7 +36,9 @@ body {
   transform: translate(-50%, -50%);
   height: 0;
   padding-top: 20px;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
   border: solid black 5px;
   background-color: white;
   margin-top: -10px;
@@ -188,6 +194,7 @@ nav ul#menu-main-menu a:active {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .photo-contact-container {
@@ -356,14 +363,16 @@ nav ul#menu-main-menu a:active {
   font-size: 12px;
   font-weight: 500;
 }
+#filters_container select:active {
+  border: solid 1.3px #215AFF;
+}
 #filters_container select:focus {
   border: solid 1.3px #215AFF;
 }
-#filters_container select option {
-  border-radius: 10px;
-}
 
 #lightbox_container {
+  height: 100%;
+  width: 100%;
   position: fixed;
   top: 0;
   right: 0;
@@ -386,20 +395,41 @@ nav ul#menu-main-menu a:active {
 #lightbox_container #lightbox_content_container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+#lightbox_container #lightbox_content_container .fa-solid, #lightbox_container #lightbox_content_container .fas {
+  color: white;
+}
+#lightbox_container #lightbox_content_container #lightbox_content {
+  width: 50%;
+}
+#lightbox_container #lightbox_content_container #lightbox_content img {
+  width: 100%;
 }
 
-.navigation_between_photos_container .nav_photo_hover_container {
+.navigation_between_photos_container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.nav_photo_hover_container {
   width: 81px;
   height: 71px;
 }
-.navigation_between_photos_container .photo_prev_nav {
+
+.photo_prev_nav {
   display: none;
   width: 81px;
   height: 71px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.navigation_between_photos_container .photo_next_nav {
+
+.photo_next_nav {
   display: none;
   width: 81px;
   height: 71px;

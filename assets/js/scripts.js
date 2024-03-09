@@ -2,6 +2,16 @@
 
 const modaleContactLink = document.querySelector(".contact-modale");
 const modaleContainer = document.querySelector("#modale_contact");
+let lightbox = document.querySelector("#lightbox_container");
+
+var buttonLoadMore = jQuery("#button_load_more_container");
+var listPhotosHome = jQuery("#photo_list_home");
+var iconExpend = jQuery(".icon_expand_background");
+var iconCloseLightbox = jQuery(".fa-xmark");
+var previousLink = jQuery(".previous_link");
+var previousImgNav = jQuery(".photo_prev_nav");
+var nextLink = jQuery(".next_link");
+var nextImgNav = jQuery(".photo_next_nav");
 
 function openModale() {
   modaleContainer.classList.toggle("overlay");
@@ -27,7 +37,7 @@ jQuery("#contact_photo").click(function () {
 
 // button load more home
 let currentPage = 1;
-jQuery("#button_load_more_container").on("click", function () {
+buttonLoadMore.on("click", function () {
   currentPage++;
 
   jQuery.ajax({
@@ -40,38 +50,39 @@ jQuery("#button_load_more_container").on("click", function () {
     },
     success: function (res) {
       if (currentPage >= res.max) {
-        jQuery("#button_load_more_container").hide();
+        buttonLoadMore.hide();
       }
-      jQuery("#photo_list_home").append(res.html);
+      listPhotosHome.append(res.html);
     },
   });
 });
 
 // Lightbox
-let lightbox = document.querySelector("#lightbox_container");
 
-jQuery(".icon_expand_background").click(function () {
+iconExpend.click(function () {
   lightbox.classList.toggle("overlay_lightbox");
 });
 
-jQuery(".fa-xmark").click(function () {
+iconCloseLightbox.click(function () {
   lightbox.classList.remove("overlay_lightbox");
 });
 
 // Nav More Photos
 
-jQuery(".previous_link").on("mouseover", function () {
-  jQuery(".photo_prev_nav").show();
+previousLink.on("mouseover", function () {
+  previousImgNav.show();
 });
 
-jQuery(".previous_link").on("mouseout", function () {
-  jQuery(".photo_prev_nav").hide();
+previousLink.on("mouseout", function () {
+  previousImgNav.hide();
 });
 
-jQuery(".next_link").on("mouseover", function () {
-  jQuery(".photo_next_nav").show();
+nextLink.on("mouseover", function () {
+  nextImgNav.show();
 });
 
-jQuery(".next_link").on("mouseout", function () {
-  jQuery(".photo_next_nav").hide();
+nextLink.on("mouseout", function () {
+  nextImgNav.hide();
 });
+
+// filters

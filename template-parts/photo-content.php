@@ -21,7 +21,7 @@
     <div class="contact_nav_container">
         <div class="photo-contact-container">
             <p>Cette photo vous intéresse ?</p>
-            <button id="contact_photo">Contact</button>
+            <button class="contact_photo" id="contact_photo">Contact</button>
         </div>
         <?php get_template_part('./template-parts/photo-navigation'); ?>
     </div>

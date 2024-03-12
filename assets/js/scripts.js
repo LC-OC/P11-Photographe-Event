@@ -13,6 +13,8 @@ var previousImgNav = jQuery(".photo_prev_nav");
 var nextLink = jQuery(".next_link");
 var nextImgNav = jQuery(".photo_next_nav");
 
+let selectCategory = jQuery("#category_select");
+
 function openModale() {
   modaleContainer.classList.toggle("overlay");
 }
@@ -86,3 +88,33 @@ nextLink.on("mouseout", function () {
 });
 
 // filters
+
+jQuery(document).ready(function () {
+  selectCategory.change(function () {
+    let categoryOptionSelected = jQuery(
+      "#category_select option:selected"
+    ).text();
+    console.log(categoryOptionSelected);
+    jQuery.ajax({
+      type: "POST",
+      dataType: "html",
+      url: "./wp-admin/admin-ajax.php",
+      data: {
+        action: "filter_photos",
+        categoryOptionSelected: categoryOptionSelected,
+      },
+      success: function (res) {
+        console.log(res);
+        listPhotosHome.html(res);
+      },
+    });
+  });
+});
+
+// Lightbox
+
+let previousImgLightbox = jQuery(".previous_link");
+let nextImgLightbox = jQuery(".next_link");
+let currentImgLightox = jQuery("#img_lightbox");
+let currentRefLightbox = jQuery("#ref_photo");
+let currentCategoryLightbox = jQuery("#category_photo");

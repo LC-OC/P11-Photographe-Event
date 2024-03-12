@@ -4,14 +4,14 @@
             <option selected="selected" >Catégories</option>
             <?php $photoCategories = get_terms( 'categorie' );
              foreach($photoCategories as $photoCategory) : ?>
-            <option value= "<?php $photoCategory->term_id; ?>"><?php echo $photoCategory->name; ?> </option>
+            <option value= "<?php $photoCategory->slug; ?>"><?php echo $photoCategory->name; ?> </option>
             <?php endforeach; ?> 
         </select>
         <select name="format" id="format_select">
             <option selected="selected" >Formats</option>
             <?php $photoFormats = get_terms( 'format' );
              foreach($photoFormats as $photoFormat) : ?>
-            <option value= "<?php $photoFormat->term_id; ?>"><?php echo $photoFormat->name; ?> </option>
+            <option value= "<?php $photoFormat->slug; ?>"><?php echo $photoFormat->name; ?> </option>
             <?php endforeach; ?> 
         </select>
     </div>

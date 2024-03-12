@@ -59,12 +59,52 @@ function weichie_load_more() {
     echo json_encode($result);
     exit;
   }
+
   add_action('wp_ajax_weichie_load_more', 'weichie_load_more');
   add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
 
-  function scripts() {
-    wp_enqueue_script( 'script-animation', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ),'',true );
-    wp_enqueue_script( 'script-font-awesome', 'https://kit.fontawesome.com/019b68e105.js', array( 'jquery' ),'' );
-    
-  }  
+
+//
+
+
+function filter_photos() {
+
+$categorySelect =$POST['categoryOptionSelected'];
+
+  $filterPhotos = new WP_Query([
+    'post_type' => "photo",
+    'posts_per_page' => 8,
+    'page' => 1,
+    'orderby' => "none",
+   'tax_query' => array(
+      array(
+          'taxonomy' => 'categorie',
+          'field' => 'slug',
+          'terms' => $categorySelect,
+      ) 
+      )
+  ]);
+
+  if($filterPhotos->have_posts()) {
+    while($filterPhotos->have_posts()) : $filterPhotos->the_post();
+      $response .= get_template_part( 'template-parts/photo-galery' );
+    endwhile;
+  } else {
+    $response = 'Aucune image ne correspond à ces critères. Veuillez faire une nouvelle recherche.';
+  }
+
+  echo $response;
+  exit;
+}
+add_action('wp_ajax_filter_photos', 'filter_photos');
+add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
+
+
+function scripts() {
+  wp_enqueue_script( 'script-animation', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ),'',true );
+  wp_enqueue_script( 'script-font-awesome', 'https://kit.fontawesome.com/019b68e105.js', array( 'jquery' ),'' );
+  
+}  
 add_action( 'wp_enqueue_scripts', 'scripts' );
+
+?>

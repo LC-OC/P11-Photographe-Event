@@ -89,25 +89,23 @@ nextLink.on("mouseout", function () {
 
 // filters
 
-jQuery(document).ready(function () {
-  selectCategory.change(function () {
-    let categoryOptionSelected = jQuery(
-      "#category_select option:selected"
-    ).text();
-    console.log(categoryOptionSelected);
-    jQuery.ajax({
-      type: "POST",
-      dataType: "html",
-      url: "./wp-admin/admin-ajax.php",
-      data: {
-        action: "filter_photos",
-        categoryOptionSelected: categoryOptionSelected,
-      },
-      success: function (res) {
-        console.log(res);
-        listPhotosHome.html(res);
-      },
-    });
+selectCategory.change(function () {
+  let categoryOptionSelected = jQuery(
+    "#category_select option:selected"
+  ).text();
+  console.log(categoryOptionSelected);
+  jQuery.ajax({
+    type: "POST",
+    dataType: "html",
+    url: "./wp-admin/admin-ajax.php",
+    data: {
+      action: "filter_photos",
+      categoryOptionSelected: categoryOptionSelected,
+    },
+    success: function (res) {
+      console.log(res);
+      listPhotosHome.html(res);
+    },
   });
 });
 

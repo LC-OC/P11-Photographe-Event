@@ -69,17 +69,16 @@ function weichie_load_more() {
 
 function filter_photos() {
 
-$categorySelect =$POST['categoryOptionSelected'];
+$categorySelect = $_POST['categoryOptionSelected'];
 
   $filterPhotos = new WP_Query([
     'post_type' => "photo",
     'posts_per_page' => 8,
     'page' => 1,
-    'orderby' => "none",
    'tax_query' => array(
       array(
           'taxonomy' => 'categorie',
-          'field' => 'slug',
+          'field' => 'name',
           'terms' => $categorySelect,
       ) 
       )
@@ -87,10 +86,10 @@ $categorySelect =$POST['categoryOptionSelected'];
 
   if($filterPhotos->have_posts()) {
     while($filterPhotos->have_posts()) : $filterPhotos->the_post();
-      $response .= get_template_part( 'template-parts/photo-galery' );
+      get_template_part( 'template-parts/photo-galery' );
     endwhile;
   } else {
-    $response = 'Aucune image ne correspond à ces critères. Veuillez faire une nouvelle recherche.';
+    echo  'Aucune image ne correspond à ces critères. Veuillez faire une nouvelle recherche.';
   }
 
   echo $response;

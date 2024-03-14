@@ -5,6 +5,10 @@
         height: 495px;
         object-fit: cover;
         cursor: pointer;
+        @media #{$mobile} {
+            width: 317.66px;
+            height: 278.8px;
+        }
     }
     .photo_overlay {
         position: absolute;
@@ -22,6 +26,10 @@
         flex-direction: column;
         justify-content: space-between;
         color: white;
+        @media #{$mobile} {
+            width: 317.66px;
+            height: 278.8px;
+        }
         .icon_expand_background {
             background: black;
             width: 34px;

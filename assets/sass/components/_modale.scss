@@ -29,6 +29,10 @@
         border: solid black 5px;
         background-color: white;
         margin-top: -10px;
+        @media #{$mobile} {
+            max-width: 80%;
+            height: 50%;
+        }
         div#form_contact {
             form {
                 display: flex;
@@ -41,6 +45,9 @@
                 font-weight: 500;
                 font-family: $space-mono;
                 text-transform: uppercase;
+                @media #{$mobile} {
+                    font-size: 14px;
+                }
             }
             input {
                 width: 263px;
@@ -48,6 +55,9 @@
                 border: solid 1px #B8BBC2;
                 border-radius: 8px;
                 margin-bottom: -10px;
+                @media #{$mobile} {
+                    height: 50px;
+                }
             }
             textarea {
                 width: 263px;
@@ -64,6 +74,9 @@
                 border-radius: unset;
                 margin-left: 4.3rem;
                 cursor: pointer;
+                @media #{$mobile} {
+                 margin-bottom: 1rem;
+                }
             }
         }
     }

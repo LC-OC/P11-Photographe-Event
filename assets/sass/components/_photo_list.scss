@@ -6,6 +6,9 @@
     padding: 2rem 0;
     gap: 20px;
     justify-content: center;
+    @media #{$mobile} {
+        gap: 20px;
+    }
 }
 
 #button_load_more_container {

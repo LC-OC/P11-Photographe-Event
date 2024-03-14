@@ -5,6 +5,12 @@
     border-top: solid 1px black;
     padding-top: 2rem;
     width: 50%;
+    @media #{$mobile} {
+        flex-direction: column;
+        width: 100%;
+        padding-bottom: 2rem;
+        align-items: center;
+    }
     p {
         font-family: $poppins;
         font-size: 14px;
@@ -18,5 +24,8 @@
         font-size: 12px;
         border: none;
         cursor: pointer;
+        @media #{$mobile} {
+            width: 263px;
+        }
     }
 }

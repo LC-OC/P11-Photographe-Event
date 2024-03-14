@@ -3,11 +3,20 @@ nav {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    @media #{$mobile} {
+        padding: 1rem 0;
+    }
     margin: 0 8rem;
     img {
         height: 14px;
+        @media #{$mobile} {
+            height: 9px;
+        }
     }
     ul#menu-main-menu {
+        @media #{$mobile} {
+            display: none;
+        }
         width: 20rem;
         list-style-type: none;
         font-family: $space-mono;

@@ -7,7 +7,13 @@
     align-items: center;
     justify-content: center;
     filter: opacity(80%);
+    @media #{$mobile} {
+        height: 250px;
+    }
     img {
         filter: opacity(100%);
+        @media #{$mobile} {
+            width: 288px;
+        }
     }
 }

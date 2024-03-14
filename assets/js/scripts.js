@@ -124,3 +124,23 @@ iconExpend.click(function () {
 iconCloseLightbox.click(function () {
   lightbox.classList.remove("overlay_lightbox");
 });
+
+// menu burger
+
+let menuIconBurger = document.getElementById("icon-menu-burger");
+let menuIconClose = document.getElementById("icon-menu-close");
+let menuContent = document.getElementById("nav_mobile");
+let menuLinks = document.querySelectorAll(".link-menu");
+
+function hideMenu() {
+  menuIconClose.style.display = "none";
+  menuIconBurger.style.display = "block";
+  menuContent.classList.remove("overlay");
+}
+
+menuIconBurger.addEventListener("click", function displayMenu() {
+  menuIconBurger.style.display = "none";
+  menuIconClose.style.display = "block";
+  menuContent.classList.toggle("overlay");
+});
+menuIconClose.addEventListener("click", hideMenu);

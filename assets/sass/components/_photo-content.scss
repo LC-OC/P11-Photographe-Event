@@ -22,6 +22,9 @@
                 line-height: 58px;
                 width: 50%;
                 font-weight: 400;
+                @media #{$mobile} {
+                    font-size: 46px;
+                }
             }
             p {
                 font-size: 14px;
@@ -46,5 +49,8 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        @media #{$mobile} {
+            height: unset;
+        }
     }
 }

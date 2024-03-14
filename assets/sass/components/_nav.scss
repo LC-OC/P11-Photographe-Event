@@ -10,35 +10,90 @@ nav {
     img {
         height: 14px;
         @media #{$mobile} {
-            height: 9px;
+            height: 12px;
+            margin-left: -4rem;
         }
     }
-    ul#menu-main-menu {
+    #menu_icon {
+        display: none;
         @media #{$mobile} {
-            display: none;
-        }
-        width: 20rem;
-        list-style-type: none;
-        font-family: $space-mono;
-        font-size: 16px;
-        text-transform: uppercase;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        a {
-            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            position: absolute;
+            right: 45px;
+            font-size: 20px;
             color: black;
-            &:visited {
-                color: black;
-                font-weight: 700;
-            }
-            &:hover {
-                color: black;
-            }
-            &:active {
-                color: black;
+            #icon-menu-close {
+                display: none;
+                font-size: 30px;
             }
         }
-}
+    }
+    #nav_mobile {
+        @media #{$mobile} {
+            z-index: 1;
+            width: 100%;
+            min-height: 100%;
+            position: fixed;
+            top: 0;
+            height: 0;
+            left: 0;
+            visibility: hidden;
+            opacity: 0;
+            text-align: center;
+            margin-top: 71.91px;
+        }
+        ul#menu-main-menu {
+            @media #{$mobile} {
+                width: 100%;
+                flex-direction: column;
+                font-size: 44px;
+                margin-left: -1.5rem;
+            }
+            width: 20rem;
+            list-style-type: none;
+            font-family: $space-mono;
+            font-size: 16px;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            li {
+                @media #{$mobile} {
+                    margin: 1.8rem 0;;
+                }
+            }
+            a {
+                text-decoration: none;
+                color: black;
+                @media #{$mobile} {
+                    color: white;
+                }
+                &:visited {
+                    color: black;
+                    font-weight: 700;
+                    @media #{$mobile} {
+                        color: white;
+                    }
+                }
+                &:hover {
+                    color: black;
+                }
+                &:active {
+                    color: black;
+                }
+            }
+    }
+    &.overlay {
+        @media #{$mobile} {
+            visibility: visible;
+            opacity: 1;
+            padding-top: 15rem;
+            background-color: #E00000;
+        }
+        
+    }
+    }
+    
 
 }

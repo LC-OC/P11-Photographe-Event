@@ -5,8 +5,17 @@
     padding: 2rem 8.7rem;
     @media #{$mobile} {
         flex-direction: column;
-        padding: 0;
-        width: 100%;
+        padding: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
+    #select_category_format_container {
+        @media #{$mobile} {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
     select {
         width: 260px;

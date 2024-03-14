@@ -2,7 +2,7 @@ footer {
     width: 100%;
     font-family: $space-mono;
     padding-bottom: 0.5rem;
-    border-top: solid 1px black;
+    border-top: solid 1px rgb(243, 224, 224);
     .menu-footer-container {
         width: 35rem;
         margin: auto;
@@ -16,6 +16,7 @@ footer {
             @media #{$mobile} {
                 flex-direction: column;
                 align-items: center;
+                margin-left: -2rem;
             }
             a {
                 text-decoration: none;

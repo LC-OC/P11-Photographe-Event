@@ -9,6 +9,7 @@
     filter: opacity(80%);
     @media #{$mobile} {
         height: 250px;
+        padding-top: 3rem;
     }
     img {
         filter: opacity(100%);

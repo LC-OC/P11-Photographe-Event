@@ -1,4 +1,12 @@
 header {
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    @media #{$mobile} {
+        position: fixed;
+        z-index: 100;
+        background-color: white;
+        height: 71.91px;
+        display: flex;
+        align-items: center;
+    }
 }

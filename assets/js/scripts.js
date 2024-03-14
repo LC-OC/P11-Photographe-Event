@@ -2,7 +2,7 @@
 
 const modaleContactLink = document.querySelector(".contact-modale");
 const modaleContainer = document.querySelector("#modale_contact");
-let lightbox = document.querySelector("#lightbox_container");
+let lightbox = document.querySelector(".lightbox_container");
 
 var buttonLoadMore = jQuery("#button_load_more_container");
 var listPhotosHome = jQuery("#photo_list_home");
@@ -13,7 +13,9 @@ var previousImgNav = jQuery(".photo_prev_nav");
 var nextLink = jQuery(".next_link");
 var nextImgNav = jQuery(".photo_next_nav");
 
-let selectCategory = jQuery("#category_select");
+let selectFilter = jQuery(
+  "#category_select, #format_select, #filter_by_select"
+);
 
 function openModale() {
   modaleContainer.classList.toggle("overlay");
@@ -47,7 +49,7 @@ buttonLoadMore.on("click", function () {
     url: "./wp-admin/admin-ajax.php",
     dataType: "json",
     data: {
-      action: "weichie_load_more",
+      action: "load_more_photos",
       paged: currentPage,
     },
     success: function (res) {
@@ -57,16 +59,6 @@ buttonLoadMore.on("click", function () {
       listPhotosHome.append(res.html);
     },
   });
-});
-
-// Lightbox
-
-iconExpend.click(function () {
-  lightbox.classList.toggle("overlay_lightbox");
-});
-
-iconCloseLightbox.click(function () {
-  lightbox.classList.remove("overlay_lightbox");
 });
 
 // Nav More Photos
@@ -89,11 +81,17 @@ nextLink.on("mouseout", function () {
 
 // filters
 
-selectCategory.change(function () {
-  let categoryOptionSelected = jQuery(
-    "#category_select option:selected"
-  ).text();
+selectFilter.change(function () {
+  let categoryOptionSelected = jQuery("#category_select")
+    .find(":selected")
+    .val();
+  let formatOptionSelected = jQuery("#format_select").find(":selected").val();
+  let filterByOptionSelected = jQuery(
+    "#filter_by_select option:selected"
+  ).val();
   console.log(categoryOptionSelected);
+  console.log(formatOptionSelected);
+  console.log(filterByOptionSelected);
   jQuery.ajax({
     type: "POST",
     dataType: "html",
@@ -101,9 +99,10 @@ selectCategory.change(function () {
     data: {
       action: "filter_photos",
       categoryOptionSelected: categoryOptionSelected,
+      formatOptionSelected: formatOptionSelected,
+      filterByOptionSelected: filterByOptionSelected,
     },
     success: function (res) {
-      console.log(res);
       listPhotosHome.html(res);
     },
   });
@@ -111,8 +110,17 @@ selectCategory.change(function () {
 
 // Lightbox
 
-let previousImgLightbox = jQuery(".previous_link");
-let nextImgLightbox = jQuery(".next_link");
-let currentImgLightox = jQuery("#img_lightbox");
+let previousImgLightbox = jQuery(".previous_lightbox");
+let nextImgLightbox = jQuery(".next_lightbox");
+let currentImgLighbox = jQuery("#img_lightbox");
 let currentRefLightbox = jQuery("#ref_photo");
 let currentCategoryLightbox = jQuery("#category_photo");
+let openImg = document.querySelectorAll(".photo_galery");
+let currentIndex = 0;
+iconExpend.click(function () {
+  lightbox.classList.toggle("overlay_lightbox");
+});
+
+iconCloseLightbox.click(function () {
+  lightbox.classList.remove("overlay_lightbox");
+});

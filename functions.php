@@ -27,13 +27,13 @@ function register_menu_footer_photographe_event() {
 remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
 
 
-function weichie_load_more() {
+function load_more_photos() {
     $ajaxposts = new WP_Query([
-        'post_type' => 'photo',
-        'posts_per_page' => 8,
-        'orderby' => 'none',
-        'post_status' => 'publish',
-        'paged' => $_POST['paged'],
+      'post_type' => 'photo',
+      'posts_per_page' => 8,
+      'orderby' => 'none',
+      'post_status' => 'publish',
+      'paged' => $_POST['paged'],
     ]);
   
     $response = '';
@@ -60,8 +60,8 @@ function weichie_load_more() {
     exit;
   }
 
-  add_action('wp_ajax_weichie_load_more', 'weichie_load_more');
-  add_action('wp_ajax_nopriv_weichie_load_more', 'weichie_load_more');
+  add_action('wp_ajax_load_more_photos', 'load_more_photos');
+  add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
 
 
 //
@@ -70,17 +70,26 @@ function weichie_load_more() {
 function filter_photos() {
 
 $categorySelect = $_POST['categoryOptionSelected'];
+$formatSelect = $_POST['formatOptionSelected'];
+$filterBySelect = $_POST['filterByOptionSelected'];
 
   $filterPhotos = new WP_Query([
     'post_type' => "photo",
     'posts_per_page' => 8,
-    'page' => 1,
-   'tax_query' => array(
+    'orderby'        => 'date',
+    'order' => $filterBySelect,
+    'tax_query' => array(
+      'relation' => 'AND',
       array(
           'taxonomy' => 'categorie',
           'field' => 'name',
           'terms' => $categorySelect,
-      ) 
+      ),
+      array(
+        'taxonomy' => 'format',
+        'field' => 'name',
+        'terms' => $formatSelect,
+    ) 
       )
   ]);
 

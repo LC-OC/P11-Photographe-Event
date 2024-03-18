@@ -4,18 +4,20 @@ const modaleContactLink = document.querySelector(".contact-modale");
 const modaleContainer = document.querySelector("#modale_contact");
 let lightbox = document.querySelector(".lightbox_container");
 
-var buttonLoadMore = jQuery("#button_load_more_container");
-var listPhotosHome = jQuery("#photo_list_home");
-var iconExpend = jQuery(".icon_expand_background");
-var iconCloseLightbox = jQuery(".fa-xmark");
-var previousLink = jQuery(".previous_link");
-var previousImgNav = jQuery(".photo_prev_nav");
-var nextLink = jQuery(".next_link");
-var nextImgNav = jQuery(".photo_next_nav");
+const buttonLoadMore = jQuery("#button_load_more_container");
+const listPhotosHome = jQuery("#photo_list_home");
+const iconExpend = jQuery(".icon_expand_background");
+const iconCloseLightbox = jQuery(".fa-xmark");
+const previousLink = jQuery(".previous_link");
+const previousImgNav = jQuery(".photo_prev_nav");
+const nextLink = jQuery(".next_link");
+const nextImgNav = jQuery(".photo_next_nav");
 
-let selectFilter = jQuery(
+const selectFilter = jQuery(
   "#category_select, #format_select, #filter_by_select"
 );
+
+// Modale Contact
 
 function openModale() {
   modaleContainer.classList.toggle("overlay");
@@ -40,24 +42,27 @@ jQuery("#contact_photo").click(function () {
 });
 
 // button load more home
-let currentPage = 1;
-buttonLoadMore.on("click", function () {
-  currentPage++;
 
-  jQuery.ajax({
-    type: "POST",
-    url: "./wp-admin/admin-ajax.php",
-    dataType: "json",
-    data: {
-      action: "load_more_photos",
-      paged: currentPage,
-    },
-    success: function (res) {
-      if (currentPage >= res.max) {
-        buttonLoadMore.hide();
-      }
-      listPhotosHome.append(res.html);
-    },
+jQuery(document).ready(function () {
+  let currentPage = 1;
+  buttonLoadMore.on("click", function () {
+    currentPage++;
+
+    jQuery.ajax({
+      type: "POST",
+      url: "./wp-admin/admin-ajax.php",
+      dataType: "json",
+      data: {
+        action: "load_more_photos",
+        paged: currentPage,
+      },
+      success: function (res) {
+        if (currentPage >= res.max) {
+          buttonLoadMore.hide();
+        }
+        listPhotosHome.append(res.html);
+      },
+    });
   });
 });
 
@@ -80,49 +85,88 @@ nextLink.on("mouseout", function () {
 });
 
 // filters
-
-selectFilter.change(function () {
-  let categoryOptionSelected = jQuery("#category_select")
-    .find(":selected")
-    .val();
-  let formatOptionSelected = jQuery("#format_select").find(":selected").val();
-  let filterByOptionSelected = jQuery(
-    "#filter_by_select option:selected"
-  ).val();
-  console.log(categoryOptionSelected);
-  console.log(formatOptionSelected);
-  console.log(filterByOptionSelected);
-  jQuery.ajax({
-    type: "POST",
-    dataType: "html",
-    url: "./wp-admin/admin-ajax.php",
-    data: {
-      action: "filter_photos",
-      categoryOptionSelected: categoryOptionSelected,
-      formatOptionSelected: formatOptionSelected,
-      filterByOptionSelected: filterByOptionSelected,
-    },
-    success: function (res) {
-      listPhotosHome.html(res);
-    },
+jQuery(document).ready(function () {
+  selectFilter.change(function () {
+    let categoryOptionSelected = jQuery("#category_select")
+      .find(":selected")
+      .val();
+    let formatOptionSelected = jQuery("#format_select").find(":selected").val();
+    let filterByOptionSelected = jQuery(
+      "#filter_by_select option:selected"
+    ).val();
+    console.log(categoryOptionSelected);
+    console.log(formatOptionSelected);
+    console.log(filterByOptionSelected);
+    jQuery.ajax({
+      type: "POST",
+      dataType: "html",
+      url: "./wp-admin/admin-ajax.php",
+      data: {
+        action: "filter_photos",
+        categoryOptionSelected: categoryOptionSelected,
+        formatOptionSelected: formatOptionSelected,
+        filterByOptionSelected: filterByOptionSelected,
+      },
+      success: function (res) {
+        listPhotosHome.html(res);
+      },
+    });
   });
 });
 
 // Lightbox
 
-let previousImgLightbox = jQuery(".previous_lightbox");
-let nextImgLightbox = jQuery(".next_lightbox");
-let currentImgLighbox = jQuery("#img_lightbox");
-let currentRefLightbox = jQuery("#ref_photo");
-let currentCategoryLightbox = jQuery("#category_photo");
-let openImg = document.querySelectorAll(".photo_galery");
-let currentIndex = 0;
-iconExpend.click(function () {
-  lightbox.classList.toggle("overlay_lightbox");
-});
+jQuery(document).ready(function () {
+  let previousImgLightbox = jQuery(".previous_lightbox");
+  let nextImgLightbox = jQuery(".next_lightbox");
+  let currentImgLighbox = jQuery("#img_lightbox");
+  let currentRefLightbox = jQuery("#ref_photo");
+  let currentCategoryLightbox = jQuery("#category_photo");
+  let contentImg = document.querySelectorAll(".photo_galery_container");
+  let imgChange = document.querySelector(".img_lightbox");
+  let arrayImgLightbox = [];
 
-iconCloseLightbox.click(function () {
-  lightbox.classList.remove("overlay_lightbox");
+  for (let img of contentImg) {
+    let imgSRC = img.querySelector("img").src;
+    arrayImgLightbox.push(imgSRC);
+  }
+
+  console.log(arrayImgLightbox);
+  let imgLenght = arrayImgLightbox.length;
+  console.log(imgLenght);
+  let currentIndex = 0;
+  iconExpend.click(function () {
+    lightbox.classList.toggle("overlay_lightbox");
+  });
+
+  iconCloseLightbox.click(function () {
+    lightbox.classList.remove("overlay_lightbox");
+  });
+
+  function prevImg() {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = imgLenght - 1;
+    }
+    changeImg();
+  }
+
+  function nextImg() {
+    if (currentIndex < imgLenght - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0;
+    }
+    changeImg();
+  }
+
+  function changeImg() {
+    imgChange.src = arrayImgLightbox[currentIndex];
+  }
+
+  previousImgLightbox.click(prevImg);
+  nextImgLightbox.click(nextImg);
 });
 
 // menu burger

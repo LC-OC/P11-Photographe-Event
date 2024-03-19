@@ -119,24 +119,35 @@ jQuery(document).ready(function () {
 jQuery(document).ready(function () {
   let previousImgLightbox = jQuery(".previous_lightbox");
   let nextImgLightbox = jQuery(".next_lightbox");
-  let currentImgLighbox = jQuery("#img_lightbox");
-  let currentRefLightbox = jQuery("#ref_photo");
-  let currentCategoryLightbox = jQuery("#category_photo");
+  let imgLightboxTitle = document.querySelector(".ref_photo");
+  let imgLightboxCategory = document.querySelector(".category_photo");
   let contentImg = document.querySelectorAll(".photo_galery_container");
   let imgChange = document.querySelector(".img_lightbox");
   let arrayImgLightbox = [];
 
-  for (let img of contentImg) {
-    let imgSRC = img.querySelector("img").src;
-    arrayImgLightbox.push(imgSRC);
+  for (let i = 0; i < contentImg.length; i++) {
+    let imgSRC = contentImg[i].querySelector("img").src;
+    let imgTitle = contentImg[i].querySelector("#title_photo").textContent;
+    let imgCategory =
+      contentImg[i].querySelector("#category_photo").textContent;
+    arrayImgLightbox[i] = {
+      src: imgSRC,
+      title: imgTitle,
+      category: imgCategory,
+    };
   }
 
-  console.log(arrayImgLightbox);
   let imgLenght = arrayImgLightbox.length;
-  console.log(imgLenght);
   let currentIndex = 0;
   iconExpend.click(function () {
     lightbox.classList.toggle("overlay_lightbox");
+    let divGallery = jQuery(this).closest(".photo_galery_container");
+    let getCurrentImg = jQuery(divGallery).find(".photo_galery").attr("src");
+    imgChange.src = getCurrentImg;
+    let getCurrentCategory = jQuery(divGallery).find("#category_photo").text();
+    imgLightboxCategory.innerHTML = getCurrentCategory;
+    let getCurrentTitle = jQuery(divGallery).find("#title_photo").text();
+    imgLightboxTitle.innerHTML = getCurrentTitle;
   });
 
   iconCloseLightbox.click(function () {
@@ -162,7 +173,9 @@ jQuery(document).ready(function () {
   }
 
   function changeImg() {
-    imgChange.src = arrayImgLightbox[currentIndex];
+    imgChange.src = arrayImgLightbox[currentIndex].src;
+    imgLightboxTitle.innerHTML = arrayImgLightbox[currentIndex].title;
+    imgLightboxCategory.innerHTML = arrayImgLightbox[currentIndex].category;
   }
 
   previousImgLightbox.click(prevImg);

@@ -28,13 +28,11 @@ remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
 
 
 function load_more_photos() {
-    $ajaxposts = new WP_Query([
-      'post_type' => 'photo',
-      'posts_per_page' => 8,
-      'orderby' => 'none',
-      'post_status' => 'publish',
-      'paged' => $_POST['paged'],
-    ]);
+  $ajaxposts = new WP_Query([
+    'post_type' => 'photo',
+    'posts_per_page' => 8,
+    'paged' => $_POST['paged'],
+  ]);
   
     $response = '';
     $max_pages = $ajaxposts->max_num_pages;
@@ -76,29 +74,31 @@ $filterBySelect = $_POST['filterByOptionSelected'];
   $filterPhotos = new WP_Query([
     'post_type' => "photo",
     'posts_per_page' => 8,
-    'orderby'        => 'date',
+    'orderby' => 'date',
     'order' => $filterBySelect,
     'tax_query' => array(
       'relation' => 'AND',
+      $categorySelect != "none" ?
       array(
           'taxonomy' => 'categorie',
           'field' => 'name',
           'terms' => $categorySelect,
-      ),
+      ) : '',
+      $formatSelect != "none" ?
       array(
         'taxonomy' => 'format',
         'field' => 'name',
         'terms' => $formatSelect,
-    ) 
+    ) : ''
       )
   ]);
 
   if($filterPhotos->have_posts()) {
     while($filterPhotos->have_posts()) : $filterPhotos->the_post();
-      get_template_part( 'template-parts/photo-galery' );
+      $responseFilters .= get_template_part( 'template-parts/photo-galery' );
     endwhile;
   } else {
-    echo  'Aucune image ne correspond à ces critères. Veuillez faire une nouvelle recherche.';
+    $responseFilters =  'Aucune image ne correspond à ces critères. Veuillez faire une nouvelle recherche.';
   }
 
   echo $response;

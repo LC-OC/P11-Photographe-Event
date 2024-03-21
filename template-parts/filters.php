@@ -1,14 +1,14 @@
 <div id="filters_container">
     <div id="select_category_format_container">
         <select name="category" id="category_select">
-            <option value="">Catégories</option>
+            <option value="none">Catégories</option>
             <?php $photoCategories = get_terms( 'categorie' );
              foreach($photoCategories as $photoCategory) : ?>
             <option value= "<?php echo $photoCategory->name; ?>"><?php echo $photoCategory->name; ?> </option>
             <?php endforeach; ?> 
         </select>
         <select name="format" id="format_select">
-            <option value="">Formats</option>
+            <option value="none">Formats</option>
             <?php $photoFormats = get_terms( 'format' );
              foreach($photoFormats as $photoFormat) : ?>
             <option value= "<?php echo $photoFormat->name; ?>"><?php echo $photoFormat->name; ?> </option>

@@ -32,6 +32,8 @@ function load_more_photos() {
     'post_type' => 'photo',
     'posts_per_page' => 8,
     'paged' => $_POST['paged'],
+    'orderby' => 'date',
+    'order' => 'DESC',
   ]);
   
     $response = '';
@@ -109,7 +111,11 @@ add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
 
 function scripts() {
-  wp_enqueue_script( 'script-animation', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ),'',true );
+  wp_enqueue_script( 'script-modale', get_stylesheet_directory_uri() . '/assets/js/modale.js', array( 'jquery' ),'',true );
+  wp_enqueue_script( 'script-js', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array( 'jquery' ),'',true );
+  wp_enqueue_script( 'script-ajax', get_stylesheet_directory_uri() . '/assets/js/ajax.js', array( 'jquery' ),'',true );
+  wp_enqueue_script( 'script-lightbox', get_stylesheet_directory_uri() . '/assets/js/lightbox.js', array( 'jquery' ),'',true );
+  
   wp_enqueue_script( 'script-font-awesome', 'https://kit.fontawesome.com/019b68e105.js', array( 'jquery' ),'' );
   
 }  

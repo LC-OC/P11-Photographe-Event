@@ -667,29 +667,4 @@ nav #nav_mobile ul#menu-main-menu a:active {
   height: 71px;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.animation_modale_out {
-  animation: fade-in-move-up 1s ease;
-}
-
-@keyframes fade-in-move-down {
-  0% {
-    opacity: 0;
-    transform: translateY(-10rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes fade-in-move-up {
-  0% {
-    transform: translate(0px, 100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(0px, 0);
-    opacity: 1;
-  }
 }/*# sourceMappingURL=index.css.map */

@@ -10,14 +10,14 @@
             Précédente
         </p>
         <div class="lightbox_content">
-        <img class="img_lightbox" src="<?php echo the_post_thumbnail_url() ?>" alt="Photo <?php the_title() ?> ">
+        <img class="img_lightbox" src="<?php //echo the_post_thumbnail_url() ?>" alt="Photo <?php the_title() ?> ">
             <div class="lightbox_photo_infos">
-                <p class="ref_photo"><?php echo get_field('reference'); ?></p>
+                <p class="ref_photo"><?php //echo get_field('reference'); ?></p>
                 <p class="category_photo">
-                <?php $categoryPhotos = get_the_terms( $post->ID, 'categorie' );
+                <?php /*$categoryPhotos = get_the_terms( $post->ID, 'categorie' );
                             foreach($categoryPhotos as $categoryPhoto) {
                                 echo $categoryPhoto-> name;
-                        } ?>
+                        }*/ ?>
                 </p>
             </div>
         </div>

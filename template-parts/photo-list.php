@@ -5,8 +5,8 @@
                 'post_type' => 'photo',
                 'posts_per_page' => 8,
                 'paged' => 1,
-                'orderby' => 'none',
-                'post_status' => 'publish',
+                'orderby' => 'date',
+                'order' => 'DESC',
             );
             $the_query = new WP_Query($args);
             if (have_posts()) : while ( $the_query->have_posts() ) : $the_query->the_post(); 

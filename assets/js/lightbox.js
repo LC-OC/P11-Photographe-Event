@@ -1,8 +1,6 @@
 let lightbox = document.querySelector(".lightbox_container");
-const iconCloseLightbox = jQuery(".fa-xmark");
-
-/* Lightbox
-
+const openLightboxIcon = jQuery(".icon_expand_background");
+const closeLightboxIcon = jQuery(".fa-xmark");
 let previousImgLightbox = jQuery(".previous_lightbox");
 let nextImgLightbox = jQuery(".next_lightbox");
 let imgLightboxTitle = document.querySelector(".ref_photo");
@@ -25,78 +23,48 @@ for (let i = 0; i < contentImg.length; i++) {
 let imgLenght = arrayImgLightbox.length;
 let currentIndex = 0;
 
-function lightboxPhotos() {
-  jQuery(document).ready(function () {
-    const iconExpend = document.querySelectorAll(".icon_expand_background");
-    for (let iconLightbox of iconExpend) {
-      console.log(iconLightbox);
-      console.log(contentImg);
-      iconLightbox.addEventListener("click", function () {
-        console.log("Icon ok");
-        lightbox.classList.toggle("overlay_lightbox");
-        let divGallery = jQuery(this).closest(".photo_galery_container");
-        let getCurrentImg = jQuery(divGallery)
-          .find(".photo_galery")
-          .attr("src");
-        imgChange.src = getCurrentImg;
-        let getCurrentCategory = jQuery(divGallery)
-          .find("#category_photo")
-          .text();
-        imgLightboxCategory.innerHTML = getCurrentCategory;
-        let getCurrentTitle = jQuery(divGallery).find("#title_photo").text();
-        imgLightboxTitle.innerHTML = getCurrentTitle;
-        console.log(imgLenght);
-      });
-    }
+openLightboxIcon.click(function () {
+  lightbox.classList.toggle("overlay_lightbox");
+  let divGallery = jQuery(this).closest(".photo_galery_container");
+  let getCurrentImg = jQuery(divGallery).find(".photo_galery").attr("src");
+  function srcImgFound(srcLightbox) {
+    return srcLightbox.src === getCurrentImg;
+  }
+  let arrayFoundSRC = arrayImgLightbox.find(srcImgFound);
+  imgChange.src = arrayFoundSRC.src;
+  imgLightboxTitle.innerHTML = arrayFoundSRC.title;
+  imgLightboxCategory.innerHTML = arrayFoundSRC.category;
+  let findIndexImg = (e) => e === arrayFoundSRC;
+  currentIndex = arrayImgLightbox.findIndex(findIndexImg);
+});
 
-    iconCloseLightbox.click(function () {
-      lightbox.classList.remove("overlay_lightbox");
-    });
+closeLightboxIcon.click(function () {
+  lightbox.classList.remove("overlay_lightbox");
+});
 
-    function prevImg() {
-      if (currentIndex > 0) {
-        currentIndex--;
-      } else {
-        currentIndex = imgLenght - 1;
-      }
-      //currentIndex = (currentIndex - 1 + imgLenght) % imgLenght;
-      if (currentIndex <= 0) {
-        currentIndex = imgLenght - 1;
-      } else {
-        currentIndex--;
-      }
-      console.log(imgLenght);
-      console.log(currentIndex);
-      changeImg();
-    }
-
-    function nextImg() {
-
-      if (currentIndex < imgLenght - 1) {
-        currentIndex++;
-      } else {
-        currentIndex = 0;
-      }
-      //currentIndex = (currentIndex + 1) % imgLenght;
-      if (currentIndex < imgLenght - 1) {
-        currentIndex = currentIndex + 1;
-      } else {
-        currentPic = 0;
-      }
-      console.log(imgLenght);
-      console.log(currentIndex);
-      changeImg();
-    }
-
-    function changeImg() {
-      imgChange.src = arrayImgLightbox[currentIndex].src;
-      imgLightboxTitle.innerHTML = arrayImgLightbox[currentIndex].title;
-      imgLightboxCategory.innerHTML = arrayImgLightbox[currentIndex].category;
-    }
-
-    previousImgLightbox.click(prevImg);
-    nextImgLightbox.click(nextImg);
-  });
+function prevImg() {
+  if (currentIndex > 0) {
+    currentIndex--;
+  } else {
+    currentIndex = imgLenght - 1;
+  }
+  changeImg();
 }
-window.onload = lightboxPhotos();
-*/
+
+function nextImg() {
+  if (currentIndex < imgLenght - 1) {
+    currentIndex++;
+  } else {
+    currentIndex = 0;
+  }
+  changeImg();
+}
+
+function changeImg() {
+  imgChange.src = arrayImgLightbox[currentIndex].src;
+  imgLightboxTitle.innerHTML = arrayImgLightbox[currentIndex].title;
+  imgLightboxCategory.innerHTML = arrayImgLightbox[currentIndex].category;
+}
+
+previousImgLightbox.click(prevImg);
+nextImgLightbox.click(nextImg);

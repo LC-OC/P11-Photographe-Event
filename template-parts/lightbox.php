@@ -5,7 +5,7 @@
     ?>
     <i class="fa-solid fa-xmark"></i>
     <div class="lightbox_content_container">
-        <p> 
+        <p class="nav_lightbox"> 
              <i  class="fa-solid fa-arrow-left previous_lightbox"></i>
             Précédente
         </p>
@@ -21,7 +21,7 @@
                 </p>
             </div>
         </div>
-       <p>
+       <p class="nav_lightbox">
             Suivante
             <i class="fa-solid fa-arrow-right next_lightbox"></i>
        </p>

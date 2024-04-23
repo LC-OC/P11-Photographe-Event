@@ -9,6 +9,9 @@ let contentImg = document.querySelectorAll(".photo_galery_container");
 let imgChange = document.querySelector(".img_lightbox");
 let arrayImgLightbox = [];
 
+let previousImgLightboxMobile = jQuery(".previous_lightbox_mobile");
+let nextImgLightboxMobile = jQuery(".next_lightbox_mobile");
+
 for (let i = 0; i < contentImg.length; i++) {
   let imgSRC = contentImg[i].querySelector("img").src;
   let imgTitle = contentImg[i].querySelector("#title_photo").textContent;
@@ -24,7 +27,7 @@ let imgLenght = arrayImgLightbox.length;
 let currentIndex = 0;
 
 function functionLightbox() {
-  openLightboxIcon.click(function (e) {
+  openLightboxIcon.click(function () {
     lightbox.classList.toggle("overlay_lightbox");
     let divGallery = jQuery(this).closest(".photo_galery_container");
     let getCurrentImg = jQuery(divGallery).find(".photo_galery").attr("src");
@@ -39,9 +42,11 @@ function functionLightbox() {
     currentIndex = arrayImgLightbox.findIndex(findIndexImg);
   });
 
-  closeLightboxIcon.click(function () {
+  function closeLightbox() {
     lightbox.classList.remove("overlay_lightbox");
-  });
+  }
+
+  closeLightboxIcon.click(closeLightbox);
 
   function prevImg() {
     if (currentIndex > 0) {
@@ -70,11 +75,17 @@ function functionLightbox() {
   previousImgLightbox.click(prevImg);
   nextImgLightbox.click(nextImg);
 
+  // mobile nav lightbox
+  previousImgLightboxMobile.click(prevImg);
+  nextImgLightboxMobile.click(nextImg);
+
   jQuery(document).keydown(function (e) {
     if (e.keyCode == 37) {
       prevImg();
     } else if (e.keyCode == 39) {
       nextImg();
+    } else if (e.keyCode == 27) {
+      closeLightbox();
     }
   });
 }

@@ -43,13 +43,14 @@
         @media #{$mobile} {
             width: 100%;
             display: block;
+            flex-direction: column;
         }
         .nav_lightbox {
             @media #{$mobile} {
                 display: none;
             }
         }
-        .fa-solid, .fas {
+        .nav_lightbox_icon {
             color: white;
             cursor: pointer;
             padding: 0 5px;
@@ -87,6 +88,22 @@
                     }
                 }
             }
+            .nav_lightbox_mobile_container {
+                display: none;
+                @media #{$mobile} {
+                    display: block;
+
+                }
+                .nav_mobile {
+                    display: flex;
+                    .nav_lightbox_mobile {
+                        padding: 0 4rem;
+                        font-size: 16px;
+                    }
+                    
+                }
+            }
         }
+        
     }
 }

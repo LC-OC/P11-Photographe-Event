@@ -7,7 +7,7 @@ const selectFilter = jQuery(
 
 jQuery(document).ready(function () {
   let currentPage = 1;
-  buttonLoadMore.on("click", function (e) {
+  buttonLoadMore.on("click", function () {
     currentPage++;
 
     jQuery.ajax({
@@ -23,7 +23,11 @@ jQuery(document).ready(function () {
           buttonLoadMore.hide();
         }
         listPhotosHome.append(res.html);
-        //lightboxPhotos();
+        function teeest() {
+          let newContent = document.querySelectorAll(".photo_galery_container");
+          console.log(newContent);
+        }
+        teeest();
       },
     });
   });

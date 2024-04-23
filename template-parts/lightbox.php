@@ -6,7 +6,7 @@
     <i class="fa-solid fa-xmark"></i>
     <div class="lightbox_content_container">
         <p class="nav_lightbox"> 
-             <i  class="fa-solid fa-arrow-left previous_lightbox"></i>
+             <i  class="fa-solid fa-arrow-left previous_lightbox nav_lightbox_icon"></i>
             Précédente
         </p>
         <div class="lightbox_content">
@@ -20,10 +20,23 @@
                         }*/ ?>
                 </p>
             </div>
+            <div class="nav_lightbox_mobile_container">
+                    <div class="nav_mobile">
+                        <p class="nav_lightbox_mobile"> 
+                                <i  class="fa-solid fa-arrow-left previous_lightbox_mobile"></i>
+                                Précédente
+                            </p>
+                        <p class="nav_lightbox_mobile">
+                                Suivante
+                                <i class="fa-solid fa-arrow-right next_lightbox_mobile"></i>
+                        </p>
+                    </div>
+                </div>
         </div>
        <p class="nav_lightbox">
             Suivante
-            <i class="fa-solid fa-arrow-right next_lightbox"></i>
+            <i class="fa-solid fa-arrow-right next_lightbox nav_lightbox_icon"></i>
        </p>
+       
     </div>
 </div>

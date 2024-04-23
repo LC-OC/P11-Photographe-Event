@@ -649,6 +649,7 @@ nav #nav_mobile ul#menu-main-menu a:active {
   .lightbox_container .lightbox_content_container {
     width: 100%;
     display: block;
+    flex-direction: column;
   }
 }
 @media screen and (max-width: 700px) {
@@ -656,13 +657,13 @@ nav #nav_mobile ul#menu-main-menu a:active {
     display: none;
   }
 }
-.lightbox_container .lightbox_content_container .fa-solid, .lightbox_container .lightbox_content_container .fas {
+.lightbox_container .lightbox_content_container .nav_lightbox_icon {
   color: white;
   cursor: pointer;
   padding: 0 5px;
 }
 @media screen and (max-width: 700px) {
-  .lightbox_container .lightbox_content_container .fa-solid, .lightbox_container .lightbox_content_container .fas {
+  .lightbox_container .lightbox_content_container .nav_lightbox_icon {
     display: none;
   }
 }
@@ -702,6 +703,21 @@ nav #nav_mobile ul#menu-main-menu a:active {
     font-size: 20px;
     padding: 0 4rem;
   }
+}
+.lightbox_container .lightbox_content_container .lightbox_content .nav_lightbox_mobile_container {
+  display: none;
+}
+@media screen and (max-width: 700px) {
+  .lightbox_container .lightbox_content_container .lightbox_content .nav_lightbox_mobile_container {
+    display: block;
+  }
+}
+.lightbox_container .lightbox_content_container .lightbox_content .nav_lightbox_mobile_container .nav_mobile {
+  display: flex;
+}
+.lightbox_container .lightbox_content_container .lightbox_content .nav_lightbox_mobile_container .nav_mobile .nav_lightbox_mobile {
+  padding: 0 4rem;
+  font-size: 16px;
 }
 
 .navigation_between_photos_container {

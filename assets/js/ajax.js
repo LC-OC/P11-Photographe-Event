@@ -23,11 +23,7 @@ jQuery(document).ready(function () {
           buttonLoadMore.hide();
         }
         listPhotosHome.append(res.html);
-        function teeest() {
-          let newContent = document.querySelectorAll(".photo_galery_container");
-          console.log(newContent);
-        }
-        teeest();
+        console.log(res.html);
       },
     });
   });

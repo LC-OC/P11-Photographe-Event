@@ -1,5 +1,6 @@
 let lightbox = document.querySelector(".lightbox_container");
-const openLightboxIcon = jQuery(".icon_expand_background");
+//const openLightboxIcon = jQuery(".icon_expand_background");
+const openLightboxIcons = document.querySelectorAll(".icon_expand_background");
 const closeLightboxIcon = jQuery(".fa-xmark");
 let previousImgLightbox = jQuery(".previous_lightbox");
 let nextImgLightbox = jQuery(".next_lightbox");
@@ -26,68 +27,93 @@ for (let i = 0; i < contentImg.length; i++) {
 let imgLenght = arrayImgLightbox.length;
 let currentIndex = 0;
 
-function functionLightbox() {
+/*function functionLightbox() {
   openLightboxIcon.click(function () {
     lightbox.classList.toggle("overlay_lightbox");
     let divGallery = jQuery(this).closest(".photo_galery_container");
+    console.log(this);
+    console.log(divGallery.innerHTML);
     let getCurrentImg = jQuery(divGallery).find(".photo_galery").attr("src");
+    console.log(getCurrentImg);
     function srcImgFound(srcLightbox) {
       return srcLightbox.src === getCurrentImg;
     }
     let arrayFoundSRC = arrayImgLightbox.find(srcImgFound);
+    console.log(imgChange);
     imgChange.src = arrayFoundSRC.src;
     imgLightboxTitle.innerHTML = arrayFoundSRC.title;
     imgLightboxCategory.innerHTML = arrayFoundSRC.category;
     let findIndexImg = (e) => e === arrayFoundSRC;
     currentIndex = arrayImgLightbox.findIndex(findIndexImg);
-  });
+  });*/
 
-  function closeLightbox() {
-    lightbox.classList.remove("overlay_lightbox");
+function openLightbox(e) {
+  lightbox.classList.toggle("overlay_lightbox");
+  let divGallery = e.target.closest(".photo_galery_container");
+  let getCurrentImg = jQuery(divGallery).find(".photo_galery").attr("src");
+  function srcImgFound(srcLightbox) {
+    return srcLightbox.src === getCurrentImg;
   }
+  let arrayFoundSRC = arrayImgLightbox.find(srcImgFound);
+  imgChange.src = arrayFoundSRC.src;
+  imgLightboxTitle.innerHTML = arrayFoundSRC.title;
+  imgLightboxCategory.innerHTML = arrayFoundSRC.category;
+  let findIndexImg = (e) => e === arrayFoundSRC;
+  currentIndex = arrayImgLightbox.findIndex(findIndexImg);
+}
 
-  closeLightboxIcon.click(closeLightbox);
+function closeLightbox() {
+  lightbox.classList.remove("overlay_lightbox");
+}
 
-  function prevImg() {
-    if (currentIndex > 0) {
-      currentIndex--;
-    } else {
-      currentIndex = imgLenght - 1;
-    }
-    changeImg();
+closeLightboxIcon.click(closeLightbox);
+
+function prevImg() {
+  if (currentIndex > 0) {
+    currentIndex--;
+  } else {
+    currentIndex = imgLenght - 1;
   }
+  changeImg();
+}
 
-  function nextImg() {
-    if (currentIndex < imgLenght - 1) {
-      currentIndex++;
-    } else {
-      currentIndex = 0;
-    }
-    changeImg();
+function nextImg() {
+  if (currentIndex < imgLenght - 1) {
+    currentIndex++;
+  } else {
+    currentIndex = 0;
   }
+  changeImg();
+}
 
-  function changeImg() {
-    imgChange.src = arrayImgLightbox[currentIndex].src;
-    imgLightboxTitle.innerHTML = arrayImgLightbox[currentIndex].title;
-    imgLightboxCategory.innerHTML = arrayImgLightbox[currentIndex].category;
-  }
+function changeImg() {
+  imgChange.src = arrayImgLightbox[currentIndex].src;
+  imgLightboxTitle.innerHTML = arrayImgLightbox[currentIndex].title;
+  imgLightboxCategory.innerHTML = arrayImgLightbox[currentIndex].category;
+}
 
-  previousImgLightbox.click(prevImg);
-  nextImgLightbox.click(nextImg);
+previousImgLightbox.click(prevImg);
+nextImgLightbox.click(nextImg);
 
-  // mobile nav lightbox
-  previousImgLightboxMobile.click(prevImg);
-  nextImgLightboxMobile.click(nextImg);
+// mobile nav lightbox
+previousImgLightboxMobile.click(prevImg);
+nextImgLightboxMobile.click(nextImg);
 
-  jQuery(document).keydown(function (e) {
-    if (e.keyCode == 37) {
-      prevImg();
-    } else if (e.keyCode == 39) {
-      nextImg();
-    } else if (e.keyCode == 27) {
-      closeLightbox();
-    }
+for (let openLightboxIcon of openLightboxIcons) {
+  openLightboxIcon.addEventListener("click", function (e) {
+    openLightbox(e);
   });
 }
 
-jQuery(document).ready(functionLightbox);
+jQuery(document).keydown(function (e) {
+  if (e.keyCode == 37) {
+    prevImg();
+  } else if (e.keyCode == 39) {
+    nextImg();
+  } else if (e.keyCode == 27) {
+    closeLightbox();
+  }
+});
+//}
+
+//jQuery(document).ready(functionLightbox);

@@ -23,7 +23,7 @@ jQuery(document).ready(function () {
           buttonLoadMore.hide();
         }
         listPhotosHome.append(res.html);
-        console.log(res.html);
+        jQuery(res).ready(lightbox);
       },
     });
   });
@@ -35,9 +35,16 @@ jQuery(document).ready(function () {
     let filterByOptionSelected = jQuery(
       "#filter_by_select option:selected"
     ).val();
-    console.log(categoryOptionSelected);
-    console.log(formatOptionSelected);
-    console.log(filterByOptionSelected);
+    if (categoryOptionSelected != "none" || formatOptionSelected != "none") {
+      document.querySelector("#button_load_more_container").style.visibility =
+        "hidden";
+    } else if (
+      categoryOptionSelected == "none" &&
+      formatOptionSelected == "none"
+    ) {
+      document.querySelector("#button_load_more_container").style.visibility =
+        "visible";
+    }
     jQuery.ajax({
       type: "POST",
       dataType: "html",
@@ -51,6 +58,7 @@ jQuery(document).ready(function () {
       },
       success: function (responseFilters) {
         listPhotosHome.html(responseFilters);
+        lightbox();
       },
     });
   });

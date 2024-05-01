@@ -23,10 +23,13 @@ jQuery(document).ready(function () {
           buttonLoadMore.hide();
         }
         listPhotosHome.append(res.html);
-        jQuery(res).ready(lightbox);
+        document.addEventListener("DOMContentLoaded", lightbox());
       },
     });
   });
+});
+
+jQuery(document).ready(function () {
   selectFilter.change(function () {
     let categoryOptionSelected = jQuery("#category_select")
       .find(":selected")
@@ -35,6 +38,7 @@ jQuery(document).ready(function () {
     let filterByOptionSelected = jQuery(
       "#filter_by_select option:selected"
     ).val();
+    /*
     if (categoryOptionSelected != "none" || formatOptionSelected != "none") {
       document.querySelector("#button_load_more_container").style.visibility =
         "hidden";
@@ -44,13 +48,13 @@ jQuery(document).ready(function () {
     ) {
       document.querySelector("#button_load_more_container").style.visibility =
         "visible";
-    }
+    }*/
     jQuery.ajax({
       type: "POST",
       dataType: "html",
       url: "./wp-admin/admin-ajax.php",
       data: {
-        paged: currentPage,
+        //paged: currentPage,
         action: "filter_photos",
         categoryOptionSelected: categoryOptionSelected,
         formatOptionSelected: formatOptionSelected,

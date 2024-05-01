@@ -77,6 +77,7 @@ $filterBySelect = $_POST['filterByOptionSelected'];
     'post_type' => "photo",
     'posts_per_page' => 8,
     'orderby' => 'date',
+    'paged' => $paged,
     'order' => $filterBySelect,
     'tax_query' => array(
       'relation' => 'AND',

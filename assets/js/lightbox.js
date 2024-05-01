@@ -1,8 +1,5 @@
 function lightbox() {
   let lightbox = document.querySelector(".lightbox_container");
-  const openLightboxIcons = document.querySelectorAll(
-    ".icon_expand_background"
-  );
   const closeLightboxIcon = jQuery(".fa-xmark");
   let previousImgLightbox = jQuery(".previous_lightbox");
   let nextImgLightbox = jQuery(".next_lightbox");
@@ -11,6 +8,7 @@ function lightbox() {
   let contentImg = document.querySelectorAll(".photo_galery_container");
   let imgChange = document.querySelector(".img_lightbox");
   let arrayImgLightbox = [];
+  let openLightboxIcons = document.querySelectorAll(".icon_expand_background");
 
   let previousImgLightboxMobile = jQuery(".previous_lightbox_mobile");
   let nextImgLightboxMobile = jQuery(".next_lightbox_mobile");
@@ -38,7 +36,6 @@ function lightbox() {
       return srcLightbox.src === getCurrentImg;
     }
     let arrayFoundSRC = arrayImgLightbox.find(srcImgFound);
-    console.log(arrayFoundSRC);
     imgChange.src = arrayFoundSRC.src;
     imgLightboxTitle.innerHTML = arrayFoundSRC.title;
     imgLightboxCategory.innerHTML = arrayFoundSRC.category;
@@ -100,4 +97,14 @@ function lightbox() {
   });
 }
 
-jQuery(document).ready(lightbox);
+document.addEventListener("DOMContentLoaded", lightbox());
+
+let buttonClicked = false;
+document
+  .getElementById("button_load_more_container")
+  .addEventListener("click", function () {
+    buttonClicked = true;
+    if (buttonClicked == true) {
+      document.removeEventListener("DOMContentLoaded", lightbox());
+    }
+  });

@@ -28,12 +28,14 @@ remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
 
 
 function load_more_photos() {
+  $filterBySelect = $_POST['filterByOptionSelected'];
+
   $ajaxposts = new WP_Query([
     'post_type' => 'photo',
     'posts_per_page' => 8,
     'paged' => $_POST['paged'],
-    'orderby' => 'date',
-    'order' => 'DESC',
+    'order' => $filterBySelect,
+    'post_status' => 'publish',
   ]);
   
     $response = '';
@@ -57,15 +59,11 @@ function load_more_photos() {
     ];
   
     echo json_encode($result);
-    exit;
+    wp_die();
   }
 
   add_action('wp_ajax_load_more_photos', 'load_more_photos');
   add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
-
-
-//
-
 
 function filter_photos() {
 
@@ -77,8 +75,8 @@ $filterBySelect = $_POST['filterByOptionSelected'];
     'post_type' => "photo",
     'posts_per_page' => 8,
     'orderby' => 'date',
-    'paged' => $paged,
     'order' => $filterBySelect,
+    'paged' => $_POST['paged'],
     'tax_query' => array(
       'relation' => 'AND',
       $categorySelect != "none" ?
@@ -105,10 +103,40 @@ $filterBySelect = $_POST['filterByOptionSelected'];
   }
 
   echo $response;
-  exit;
+  wp_die();
 }
 add_action('wp_ajax_filter_photos', 'filter_photos');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function scripts() {

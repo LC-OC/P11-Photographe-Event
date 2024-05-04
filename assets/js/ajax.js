@@ -17,6 +17,9 @@ jQuery(document).ready(function () {
       data: {
         action: "load_more_photos",
         paged: currentPage,
+        categoryOptionSelected: jQuery("#category_select").val(),
+        formatOptionSelected: jQuery("#format_select").val(),
+        filterByOptionSelected: jQuery("#filter_by_select").val(),
       },
       success: function (res) {
         if (currentPage >= res.max) {
@@ -27,10 +30,8 @@ jQuery(document).ready(function () {
       },
     });
   });
-});
-
-jQuery(document).ready(function () {
   selectFilter.change(function () {
+    currentPage = 1;
     let categoryOptionSelected = jQuery("#category_select")
       .find(":selected")
       .val();
@@ -38,7 +39,6 @@ jQuery(document).ready(function () {
     let filterByOptionSelected = jQuery(
       "#filter_by_select option:selected"
     ).val();
-    /*
     if (categoryOptionSelected != "none" || formatOptionSelected != "none") {
       document.querySelector("#button_load_more_container").style.visibility =
         "hidden";
@@ -48,19 +48,24 @@ jQuery(document).ready(function () {
     ) {
       document.querySelector("#button_load_more_container").style.visibility =
         "visible";
-    }*/
+    }
     jQuery.ajax({
       type: "POST",
       dataType: "html",
       url: "./wp-admin/admin-ajax.php",
       data: {
-        //paged: currentPage,
+        paged: currentPage,
         action: "filter_photos",
         categoryOptionSelected: categoryOptionSelected,
         formatOptionSelected: formatOptionSelected,
         filterByOptionSelected: filterByOptionSelected,
       },
       success: function (responseFilters) {
+        if (currentPage >= responseFilters.max) {
+          buttonLoadMore.hide();
+        } else {
+          buttonLoadMore.show();
+        }
         listPhotosHome.html(responseFilters);
         lightbox();
       },
